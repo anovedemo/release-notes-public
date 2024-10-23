@@ -1,0 +1,16 @@
+title: My Jekyll Site
+description: A simple Jekyll site
+baseurl: "https://anove.draftsman.io" # the subpath of your site, e.g. /blog
+url: "https://anove.draftsman.io" # the base hostname & protocol for your site
+theme: jekyll-theme-minimal # Change to your desired theme
+markdown: kramdown
+
+# Build settings
+include:
+  - _pages
+  - _posts
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
