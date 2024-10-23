@@ -1,0 +1,16 @@
+.custom-editor-container .wmde-markdown {
+    border: none; /* Remove blue line or borders */
+    padding: 0; /* Avoid padding issues */
+    line-height: 1.5; /* Ensure correct line spacing */
+}
+
+.editor-wrapper * {
+    all: unset; /* Reset all inherited styles */
+}
+
+  .editor-wrapper {
+    all: revert; /* Reapply default styles */
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
