@@ -3,35 +3,37 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Deploy on push to the 'main' branch
+      - main  # Deploys when code is pushed to the 'main' branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use Ubuntu for Node.js-based builds
+    runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository code
+      # Step 1: Checkout repository code
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Set up Node.js environment
+      # Step 2: Set up Node.js environment for Vite
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.20.4'  # Specify the Node.js version
+          node-version: '18.x'  # Specify your Node.js version
 
       # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      - name: Build static site
+      # Step 4: Build the Vite project
+      - name: Build project
         run: npm run build
         env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
-      # Step 5: Deploy the built site to GitHub Pages
+      # Step 5: Deploy the built files to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Output folder for Vite build (usually 'dist')
+          publish_dir: ./dist  # Vite outputs built files to 'dist' by default
