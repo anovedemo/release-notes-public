@@ -1,9 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
+console.log('Supabase URL:', supabaseUrl); // Log URL
+console.log('Supabase Key:', supabaseKey); // Log Key
+
+if (!supabaseUrl || !supabaseKey) {
     throw new Error('Supabase URL and anon key must be defined');
 }
 
