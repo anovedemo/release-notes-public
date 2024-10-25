@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/release-notes-public/',
   build: {
+    outDir: 'dist', // Default output directory
     rollupOptions: {
       output: {
         // This splits out large dependencies like React into separate chunks
