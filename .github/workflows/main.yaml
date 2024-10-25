@@ -3,7 +3,7 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Deploys when code is pushed to the 'main' branch
+      - jean-hugues  # Deploys when code is pushed to the 'main' branch
 
 jobs:
   build:
