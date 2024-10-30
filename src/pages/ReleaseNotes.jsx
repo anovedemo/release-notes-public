@@ -20,19 +20,22 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
             item =>
             <div key={item.id}>
                 <div
+                    onClick={
+                        shownReleaseNotes.includes(item.id) ?
+
+                        // OnClick removes the clicked item from the showReleaseNotes array.
+                        () => setShownReleaseNotes((prevState) => prevState.filter(id => id !== item.id)) :
+
+                        // OnClick adds the clicked item to the showReleaseNotes array.
+                        () => setShownReleaseNotes((prevState) => [...prevState, item.id])
+                    }
                     className='dropdown'
                 >
-                    {!shownReleaseNotes.includes(item.id) &&
-                    <img
-                        src="/arrow_right.svg"
-                        onClick={() => setShownReleaseNotes((prevState) => [...prevState, item.id])}
-                    />}
-                    {shownReleaseNotes.includes(item.id) &&
-                    <img
-                        src="/arrow_down.svg"
-                        onClick={() => setShownReleaseNotes((prevState) => prevState.filter(id => id !== item.id))}
-                        // OnClick removes the clicked item from the showReleaseNotes array.
-                        />}
+                    {
+                        shownReleaseNotes.includes(item.id) ?
+                        <img src="/arrow_down.svg" /> :
+                        <img src="/arrow_right.svg" />
+                    }
                     <h4>{item.date}</h4>
                 </div>
                 <div>

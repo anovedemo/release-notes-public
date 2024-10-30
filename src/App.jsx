@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [releaseData, setReleaseData] = useState();
 
+  // Fetch release notes from the supabase server.
   const fetchReleaseNotes = async () => {
       try {
           const { data, error } = await supabase
@@ -33,7 +34,9 @@ function App() {
 
   useEffect(() => {
 
-    // Fetches the current session.
+    fetchReleaseNotes();
+
+    // Fetch the current session.
     const fetchSession = async () => {
       setLoading(true);
       const { data: { session } } = await supabase.auth.getSession();
@@ -41,7 +44,7 @@ function App() {
       setLoading(false);
     }
 
-    // Listen for changes in auth session
+    // Listen for changes in auth session.
     const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
@@ -53,12 +56,7 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    fetchReleaseNotes();
-  }, [])
-
-  console.log("release data:", releaseData);
-
+  // Handle logging out.
   const handleLogOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
