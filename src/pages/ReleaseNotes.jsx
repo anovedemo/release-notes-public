@@ -1,7 +1,9 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import './ReleaseNotes.css'
 import Release from "../components/Release";
 import { useState } from "react";
+import 'animate.css';
 
 function ReleaseNotes({ currentSession, logout, releaseData }) {
     if (!releaseData) {
@@ -9,7 +11,7 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
             <div>
                 <Header currentSession={currentSession} logout={logout}/>
                 <div className="flex justify-center">
-                    <h1 className="text-xl">Loading release notes...</h1>
+                    <h1 className="text-xl animate__animated animate__fadeIn">Loading release notes...</h1>
                 </div>
             </div>
         )
@@ -51,8 +53,8 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                 <div className="fade-in">
                     <div class="bg-white py-10 mb-8 sm:py-10 lg:px-6">
                         <div class="mx-auto max-w-2xl text-center w-[90%] lg:w-2/3">
-                            <h1 class="lg:mt-2 text-4xl font-bold tracking-tight text-gray-900 md:text-6xl bg-gradient-to-r from-cornell to-midblue inline-block text-transparent bg-clip-text">Release Notes</h1>
-                            <p class="mt-6 text-md md:text-lg leading-8 text-gray-600">Stay updated with the latest features, improvements, and bug fixes in the Anove app. Here, you’ll find detailed information on recent updates.</p>
+                            <h1 class="lg:mt-2 text-4xl font-bold tracking-tight text-gray-900 md:text-6xl bg-gradient-to-r from-cornell to-midblue inline-block text-transparent bg-clip-text animate__animated animate__fadeInDown">Release Notes</h1>
+                            <p class="mt-6 text-md md:text-lg leading-8 text-gray-600 animate__animated animate__fadeInUp">Stay updated with the latest features, improvements, and bug fixes in the Anove app. Here, you’ll find detailed information on recent updates.</p>
                         </div>
                     </div>
                     <div className="flex justify-center">
@@ -64,7 +66,19 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                             {datesList}
                         </div>
                     </div>
+                    <div class="bg-white py-10 mb-8 sm:py-10 lg:px-6">
+                        <div class="mx-auto max-w-2xl text-center w-[90%] lg:w-2/3">
+                            <h2 class="lg:mt-2 text-xl font-bold tracking-tight text-gray-900 md:text-3xl bg-gradient-to-r from-cornell to-midblue inline-block text-transparent bg-clip-text fade-in">Feedback</h2>
+                            <p class="mt-6 text-sm md:text-md text-gray-600 fade-in">
+                            We value your feedback! If you encounter any issues, have suggestions for improvements, or want to share your thoughts about the application, please don't hesitate to reach out to our support team via Intercom or email <a href="mailto:contact@anove.ai" className="text-midblue">contact@anove.ai</a>.
+                            <br></br>
+                            <br></br>
+                            We deeply appreciate your support and trust in Anove, and we are committed to continuously improving our platform to help safeguard your organization's information security and compliance needs
+                            </p>
+                        </div>
+                    </div>
                 </div>
+                <Footer />
             </div>
         )
     }
