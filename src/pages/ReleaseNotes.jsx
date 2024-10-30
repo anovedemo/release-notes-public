@@ -30,7 +30,7 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                     {shownReleaseNotes.includes(item.id) &&
                     <img
                         src="/arrow_down.svg"
-                        onClick={() => setShownReleaseNotes((prevState) => prevState.splice(prevState.indexOf(item.id)), 1)}
+                        onClick={() => setShownReleaseNotes((prevState) => prevState.filter(id => id !== item.id))}
                         // OnClick removes the clicked item from the showReleaseNotes array.
                         />}
                     <h4>{item.date}</h4>
