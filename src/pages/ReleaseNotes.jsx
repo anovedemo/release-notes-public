@@ -6,6 +6,24 @@ import { useState } from "react";
 import 'animate.css';
 
 function ReleaseNotes({ currentSession, logout, releaseData }) {
+
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        let formattedDate = date.toLocaleDateString('en-US', options);
+
+        formattedDate = formattedDate.replace(/\b(\d+)\b/, (day) => {
+            const suffix = day.endsWith('1') && !day.endsWith('11') ? 'st'
+                        : day.endsWith('2') && !day.endsWith('12') ? 'nd'
+                        : day.endsWith('3') && !day.endsWith('13') ? 'rd'
+                        : 'th';
+            return `${day}${suffix}`;
+        });
+
+        return formattedDate;
+    }
+
     if (!releaseData) {
         return (
             <div>
@@ -38,7 +56,7 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                         <img src="/arrow_down.svg" /> :
                         <img src="/arrow_right.svg" />
                     }
-                    <h4>{item.date}</h4>
+                    <h4>{formatDate(item.date)}</h4>
                 </div>
                 <div>
                     {shownReleaseNotes.includes(item.id) && <Release clickedRelease={item.id} releaseData={releaseData}/>}
