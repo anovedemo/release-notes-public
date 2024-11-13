@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import './Documentation.css'
 import { useNavigate } from "react-router-dom";
@@ -16,16 +17,20 @@ function Documentation( { currentSession, logout }) {
                     </div>
                 </div>
                 <div className="flex flex-col w-full items-center justify-center">
-                    <div className="flex">
-                        <div className="py-40 px-40 m-10 text-4xl rounded-xl font-medium shadow-lg cursor-pointer hover:text-cornell flex flex-col">
+                    <div className="flex flex-col items-center lg:flex lg:flex-row">
+                        <a href="https://www.youtube.com/@AnoveInternational/videos" className="py-40 w-4/5 lg:w-1/2 m-10 text-4xl rounded-xl shadow-lg font-medium cursor-pointer hover:text-cornell flex flex-col gap-2 items-center hover:scale-105 transition-all duration-300 ease-in-out fade-in">
                             <h1>Videos</h1>
-                        </div>
-                        <div className="py-40 px-40 m-10 text-4xl rounded-xl font-medium shadow-lg cursor-pointer hover:text-cornell flex flex-col" onClick={() => navigate('/articles')}>
+                            <h3 className="text-lg w-2/3 text-black opacity-60 text-center">Discover all of our videos! Here you will find video-based tutorials.</h3>
+                        </a>
+                        <div className="py-40 w-4/5 lg:w-1/2 m-10 text-4xl rounded-xl shadow-lg font-medium cursor-pointer hover:text-cornell flex flex-col gap-2 items-center hover:scale-105 transition-all duration-300 ease-in-out fade-in" onClick={() => navigate('/articles')}>
                             <h1>Articles</h1>
+                            <h3 className="text-lg w-2/3 text-black opacity-60 text-center">Discover all of our articles! Here you will find text-based guides.</h3>
                         </div>
                     </div>
                 </div>
             </div>
+            <div className="mt-40"></div>
+            <Footer/>
         </>
     )
 }

@@ -81,7 +81,7 @@ function Articles( { currentSession, logout, articleData }) {
                     :
                     <div className="flex justify-center fade-in">
                         <div className="w-[90%] lg:w-2/3">
-                            <h1 className="text-4xl font-medium pt-14 pb-2">All Articles</h1>
+                            <h1 className="text-4xl font-medium pt-14 pb-2 animate__animated animate__fadeInLeft">All Articles</h1>
                             <p>Here you can find all of our text based guides.</p>
                             <div className="divider"></div>
 
