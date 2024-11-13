@@ -12,6 +12,7 @@ function Header({ currentSession, logout }) {
                     <img src='/Primary Logo on Light BG.svg' className='w-[10%] hover:cursor-pointer hidden lg:flex' onClick={() => navigate("/")}/>
                     <img src='/symbolic mark.svg' className='w-1/6 md:w-[10%] hover:cursor-pointer lg:hidden' onClick={() => navigate("/")}/>
                     <div className='flex'>
+                        <p className='text-md font-medium hover:cursor-pointer mr-10' onClick={() => navigate("/documentation")}>Documentation</p>
                         <p className='text-md font-medium hover:cursor-pointer' onClick={() => navigate("/")}>Release Notes</p>
                         {currentSession && <p className='text-md font-medium ml-10 hover:cursor-pointer' onClick={() => navigate("/update")}>Upload</p>}
                     </div>

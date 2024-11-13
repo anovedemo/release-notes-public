@@ -2,15 +2,18 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ReleaseNotes from './pages/ReleaseNotes'
 import Authentication from './pages/Authentication'
 import UpdateReleaseNotes from './pages/UpdateReleaseNotes'
+import Documentation from './pages/Documentation'
 import './App.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { supabase } from './supabaseClient';
+import Articles from './pages/Articles'
 
 function App() {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
   const [releaseData, setReleaseData] = useState();
+  const [articleData, setArticleData] = useState();
 
   // Fetch release notes from the supabase server.
   const fetchReleaseNotes = async () => {
@@ -32,9 +35,30 @@ function App() {
       }
   }
 
+    // Fetch articles from the supabase server.
+    const fetchArticles = async () => {
+      try {
+          const { data, error } = await supabase
+              .from("articles")
+              .select("*")
+              .order('date', { ascending: false });
+
+          if (error) {
+              console.error("Error feching artiles: ", error);
+          } else {
+              setArticleData(data);
+          }
+      } catch (error) {
+          console.error("Error fetching articles: ", error)
+      } finally {
+          setLoading(false)
+      }
+  }
+
   useEffect(() => {
 
     fetchReleaseNotes();
+    fetchArticles();
 
     // Fetch the current session.
     const fetchSession = async () => {
@@ -73,6 +97,8 @@ function App() {
           <Route index element={<ReleaseNotes currentSession={session} logout={handleLogOut} releaseData={releaseData}/>} />
           <Route path='/authentication' element={<Authentication currentSession={session} logout={handleLogOut} />} />
           <Route path='/update' element={<UpdateReleaseNotes currentSession={session} logout={handleLogOut} />} />
+          <Route path='/documentation' element={<Documentation currentSession={session} logout={handleLogOut}/>} />
+          <Route path='/articles' element={<Articles currentSession={session} logout={handleLogOut} articleData={articleData}/>} />
         </Routes>
       </BrowserRouter>
     </>
