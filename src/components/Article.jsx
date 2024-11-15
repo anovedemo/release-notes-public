@@ -10,7 +10,7 @@ function Article({ clickedArticle, articleData }) {
     }
 
     return (
-        <div className='fade-in prose prose-p:leading-tight prose-headings:leading-none prose-h1:mb-0 prose-headings:font-semibold mt-3'>
+        <div className="fade-in prose max-w-none prose-p:leading-tight prose-headings:leading-none prose-h1:mb-0 prose-headings:font-semibold mt-3">
             <Markdown remarkPlugins={[remarkGfm]}>{articleData[id].markdown}</Markdown>
         </div>
     )

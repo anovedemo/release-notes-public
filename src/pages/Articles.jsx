@@ -61,35 +61,37 @@ function Articles( { currentSession, logout, articleData }) {
         )
 
         return (
-            <>
+            <div className="flex flex-col min-h-screen">
                 <Header currentSession={currentSession} logout={logout}/>
-                {
-                    (shownArticles.length > 0) ?
-                    <div className="flex justify-center pt-10">
-                        <div className="w-[90%] lg:w-2/3">
-                        <Article clickedArticle={shownArticles[0]} articleData={articleData}/>
-                        <div className="divider"></div>
-                        <button
-                                type="button"
-                                className="rounded-md bg-cornell px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-cornell_light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                onClick={() => setShownArticles([])}
-                            >
-                                Go Back
-                        </button>
-                        </div>
-                    </div>
-                    :
-                    <div className="flex justify-center fade-in">
-                        <div className="w-[90%] lg:w-2/3">
-                            <h1 className="text-4xl font-medium pt-14 pb-2 animate__animated animate__fadeInLeft">All Articles</h1>
-                            <p>Here you can find all of our text based guides.</p>
+                <div className="flex-grow">
+                    {
+                        (shownArticles.length > 0) ?
+                        <div className="flex justify-center pt-10 w-full">
+                            <div className="w-[90%] lg:w-2/3">
+                            <Article clickedArticle={shownArticles[0]} articleData={articleData}/>
                             <div className="divider"></div>
-
-                            {articles}
+                            <button
+                                    type="button"
+                                    className="rounded-md bg-cornell px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-cornell_light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    onClick={() => setShownArticles([])}
+                                >
+                                    Go Back
+                            </button>
+                            </div>
                         </div>
-                    </div>
-                }
-            </>
+                        :
+                        <div className="flex justify-center fade-in">
+                            <div className="w-[90%] lg:w-2/3">
+                                <h1 className="text-4xl font-medium pt-14 pb-2">All Articles</h1>
+                                <p>Here you can find all of our text based guides.</p>
+                                <div className="divider"></div>
+                                <div className="animate__animated animate__fadeInUp">{articles}</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <Footer />
+            </div>
         )
     }
 }
