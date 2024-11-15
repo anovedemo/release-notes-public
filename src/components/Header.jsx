@@ -13,7 +13,7 @@ function Header({ currentSession, logout }) {
                     <img src='/symbolic mark.svg' className='w-1/6 md:w-[10%] hover:cursor-pointer lg:hidden mr-6' onClick={() => navigate("/")}/>
                     <div className='flex items-center'>
                         <p className='text-md font-medium hover:cursor-pointer mr-10 transition-all duration-300 ease-in-out hover:text-midblue' onClick={() => navigate("/documentation")}>Documentation</p>
-                        <p className='text-md font-medium hover:cursor-pointer transition-all duration-300 ease-in-out hover:text-midblue' onClick={() => navigate("/")}>Release Notes</p>
+                        <p className='text-md font-medium hover:cursor-pointer transition-all duration-300 ease-in-out hover:text-midblue' onClick={() => navigate("/release_notes")}>Release Notes</p>
                         {currentSession && <p className='text-md font-medium ml-10 hover:cursor-pointer transition-all duration-300 ease-in-out hover:text-midblue' onClick={() => navigate("/update")}>Upload</p>}
                     </div>
                     {

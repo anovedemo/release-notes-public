@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import './Documentation.css'
 import { useNavigate } from "react-router-dom";
 
-function Documentation( { currentSession, logout }) {
+function Documentation( { currentSession, logout } ) {
     const navigate = useNavigate();
 
     return (

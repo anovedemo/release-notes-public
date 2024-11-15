@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { supabase } from './supabaseClient';
 import Articles from './pages/Articles'
+import LandingPage from './pages/LandingPage'
 
 function App() {
   const [session, setSession] = useState(null);
@@ -94,7 +95,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<ReleaseNotes currentSession={session} logout={handleLogOut} releaseData={releaseData}/>} />
+          <Route index element={<LandingPage currentSession={session} logout={handleLogOut} releaseData={releaseData}/>} />
+          <Route path='/release_notes' element={<ReleaseNotes currentSession={session} logout={handleLogOut} releaseData={releaseData}/>} />
           <Route path='/authentication' element={<Authentication currentSession={session} logout={handleLogOut} />} />
           <Route path='/update' element={<UpdateReleaseNotes currentSession={session} logout={handleLogOut} />} />
           <Route path='/documentation' element={<Documentation currentSession={session} logout={handleLogOut}/>} />
