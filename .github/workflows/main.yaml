@@ -3,7 +3,7 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Deploys when code is pushed to the 'main' branch
+      - jean-hugues  # Deploys when code is pushed to the 'main' branch
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
     steps:
       # Step 1: Checkout repository code
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Step 2: Set up Node.js environment for Vite
       - name: Set up Node.js
@@ -40,13 +40,7 @@ jobs:
       # Step 5: Build the Vite project
       - name: Build project
         run: npm run build
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          VITE_SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
       # Step 6: Deploy the built files to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Vite outputs built files to 'dist' by default
