@@ -30,28 +30,28 @@ function Footer() {
                     </div>
                     <div className="lg:w-1/5 flex flex-col gap-2 py-5">
                         <h2 className="text-xl font-medium mb-2">SERVICES</h2>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/product">Product</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/pricing-plans">Pricing</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/resources/whitepapers">Whitepapers</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer"href="https://www.anove.ai/tutorials">Tutorials</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://uptime.anove.ai/status/application">Service Availability</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://github.com/orgs/anovedemo/projects/1">Roadmap Product</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/product">Product</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/pricing-plans">Pricing</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/resources/whitepapers">Whitepapers</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer"href="https://www.anove.ai/tutorials">Tutorials</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://uptime.anove.ai/status/application">Service Availability</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://github.com/orgs/anovedemo/projects/1">Roadmap Product</a>
                     </div>
                     <div className="lg:w-1/5 flex flex-col gap-2 py-5">
                         <h2 className="text-xl font-medium mb-2">ABOUT US</h2>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/team">Who we are</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/our-story">What we did</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/vacancies">Careers</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/contact">Contact</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/customers-subprocessors">Our subprocessors</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/team">Who we are</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/our-story">What we did</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/vacancies">Careers</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/contact">Contact</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/customers-subprocessors">Our subprocessors</a>
                     </div>
                     <div className="lg:w-1/5 flex flex-col gap-2 py-5">
                         <h2 className="text-xl font-medium mb-2">TERMS</h2>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/privacy-policy">Privacy Policy</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://www.anove.ai/terms-and-conditions">Terms & Conditions</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="mailto:disclosure@anove.agency">Responsible Disclosure</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="mailto:info@anove.agency">Partner Agreement</a>
-                        <a className="text-sm hover:text-midblue cursor-pointer" href="https://cdn.prod.website-files.com/6645d75ee9f42de45f405c96/6654550956b10b36d63a27c3_term.pdf">License Agreement</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/privacy-policy">Privacy Policy</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://www.anove.ai/terms-and-conditions">Terms & Conditions</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="mailto:disclosure@anove.agency">Responsible Disclosure</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="mailto:info@anove.agency">Partner Agreement</a>
+                        <a className="text-sm transition-all duration-300 ease-in-out hover:text-midblue cursor-pointer" href="https://cdn.prod.website-files.com/6645d75ee9f42de45f405c96/6654550956b10b36d63a27c3_term.pdf">License Agreement</a>
                     </div>
                 </div>
                 { /*<h2 className='text-2xl font-medium hidden lg:flex'>Subscribe For Our Newsletters</h2>

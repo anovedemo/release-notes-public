@@ -49,7 +49,7 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                         // OnClick adds the clicked item to the showReleaseNotes array.
                         () => setShownReleaseNotes((prevState) => [...prevState, item.id])
                     }
-                    className='dropdown'
+                    className="dropdown hover:bg-midblue hover:bg-opacity-10 p-3 rounded-md transition-colors duration-300 ease-in-out"
                 >
                     {
                         shownReleaseNotes.includes(item.id) ?
@@ -61,7 +61,7 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                 <div>
                     {shownReleaseNotes.includes(item.id) && <Release clickedRelease={item.id} releaseData={releaseData}/>}
                 </div>
-                <div className="divider"></div>
+                <div className="divider my-2"></div>
             </div>
         )
 
@@ -79,9 +79,9 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                         <div className="w-[90%] lg:w-2/3">
                             <h2 className="text-2xl font-medium">Latest Release Notes</h2>
                             <p>Here you can find the release notes for the most recent Anove version.</p>
-                            <div className="divider"></div>
+                            <div className="divider mb-2"></div>
 
-                            {datesList}
+                            <div className="animate__animated animate__fadeInUp">{datesList}</div>
                         </div>
                     </div>
                     <div class="bg-white py-10 mb-8 sm:py-10 lg:px-6">

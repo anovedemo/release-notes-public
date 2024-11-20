@@ -1,28 +1,10 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Release from "../components/Release";
 import { useState } from "react";
 import 'animate.css';
 import Article from "../components/Article";
 
 function Articles( { currentSession, logout, articleData }) {
-    function formatDate(dateStr) {
-        const date = new Date(dateStr);
-
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        let formattedDate = date.toLocaleDateString('en-US', options);
-
-        formattedDate = formattedDate.replace(/\b(\d+)\b/, (day) => {
-            const suffix = day.endsWith('1') && !day.endsWith('11') ? 'st'
-                        : day.endsWith('2') && !day.endsWith('12') ? 'nd'
-                        : day.endsWith('3') && !day.endsWith('13') ? 'rd'
-                        : 'th';
-            return `${day}${suffix}`;
-        });
-
-        return formattedDate;
-    }
-
     if (!articleData) {
         return (
             <div>
@@ -34,7 +16,6 @@ function Articles( { currentSession, logout, articleData }) {
         )
     } else {
         const [shownArticles, setShownArticles] = useState([]);
-        const [seenCategories, setSeenCategories] = useState([]);
 
         const articles = articleData.map(
             item =>
@@ -52,7 +33,10 @@ function Articles( { currentSession, logout, articleData }) {
                     className="dropdown hover:bg-midblue hover:bg-opacity-10 p-3 rounded-md transition-colors duration-300 ease-in-out"
                 >
                     <img src="/arrow_right.svg" />
-                    <h4>{item.title}</h4>
+                    <div className="flex justify-between w-full pr-4 items-center">
+                        <h4 className="text-xl text-midblue font-medium">{item.title}</h4>
+                        <h4 className="text-gray-500 font-medium">{item.category}</h4>
+                    </div>
                 </div>
                 <div>
                     {shownArticles.includes(item.id) && <Article clickedArticle={item.id} articleData={articleData}/>}
