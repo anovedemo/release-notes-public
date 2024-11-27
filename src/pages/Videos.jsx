@@ -32,10 +32,10 @@ function Videos( { currentSession, logout, videoData } ) {
                     }
                     className="dropdown hover:bg-midblue hover:bg-opacity-10 p-3 rounded-md transition-colors duration-300 ease-in-out flex"
                 >
-                    <img src="/arrow_right.svg" />
-                    <div className="flex justify-between w-full pr-4 items-center">
-                        <h4 className="text-xl text-midblue font-medium">{item.title}</h4>
-                        <h4 className="text-gray-500 font-medium">{item.category}</h4>
+                    <img className="hidden md:flex" src="/arrow_right.svg" />
+                    <div className="flex-row md:flex justify-between w-full pr-2 lg:pr-4 items-center">
+                        <h4 className="text-lg md:text-xl text-midblue font-medium">{item.title}</h4>
+                        <h4 className="text-gray-500 text-sm md:text-base font-medium">{item.category}</h4>
                     </div>
                 </div>
                 <div>
@@ -67,13 +67,14 @@ function Videos( { currentSession, logout, videoData } ) {
                         <div className="flex justify-center fade-in">
                             <div className="w-[90%] lg:w-2/3">
                                 <h1 className="text-4xl font-medium pt-14 pb-2">Videos</h1>
-                                <p className="mb-4">Here you can find all of our video based guides.</p>
-                                <h2 className="text-2xl">Recommended Videos</h2>
+                                <p className="mb-6">Here you can find all of our video based guides.</p>
+                                <h2 className="text-2xl md:hidden">Recommended Video</h2>
+                                <h2 className="text-2xl hidden md:flex">Recommended Videos</h2>
                                 <div className="divider"></div>
-                                <div className="flex gap-10 mb-8">
+                                <div className="flex flex-col md:flex-row md:gap-10 mb-8">
                                     <a href="https://www.youtube.com/watch?v=L7GSODnPoyU">
                                         <img
-                                            className="shadow-lg my-4 hover:scale-105 transition-all duration-300 ease-in-out"
+                                            className="shadow-lg md:my-4 hover:scale-105 transition-all duration-300 ease-in-out hidden md:flex"
                                             style={{ aspectRatio: "16/9" }}
                                             src="https://img.youtube.com/vi/L7GSODnPoyU/maxresdefault.jpg">
                                         </img>
@@ -87,7 +88,7 @@ function Videos( { currentSession, logout, videoData } ) {
                                     </a>
                                     <a href="https://www.youtube.com/watch?v=niukcmKUsPA">
                                         <img
-                                            className="shadow-lg my-4 hover:scale-105 transition-all duration-300 ease-in-out"
+                                            className="shadow-lg my-4 hover:scale-105 transition-all duration-300 ease-in-out hidden md:flex"
                                             style={{ aspectRatio: "16/9" }}
                                             src="https://img.youtube.com/vi/niukcmKUsPA/maxresdefault.jpg">
                                         </img>

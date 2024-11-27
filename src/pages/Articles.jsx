@@ -32,10 +32,10 @@ function Articles( { currentSession, logout, articleData }) {
                     }
                     className="dropdown hover:bg-midblue hover:bg-opacity-10 p-3 rounded-md transition-colors duration-300 ease-in-out"
                 >
-                    <img src="/arrow_right.svg" />
-                    <div className="flex justify-between w-full pr-4 items-center">
-                        <h4 className="text-xl text-midblue font-medium">{item.title}</h4>
-                        <h4 className="text-gray-500 font-medium">{item.category}</h4>
+                    <img className="hidden md:flex" src="/arrow_right.svg" />
+                    <div className="flex-row md:flex justify-between w-full pr-2 lg:pr-4 items-center">
+                        <h4 className="text-lg md:text-xl text-midblue font-medium">{item.title}</h4>
+                        <h4 className="text-gray-500 text-sm md:text-base font-medium">{item.category}</h4>
                     </div>
                 </div>
                 <div>
