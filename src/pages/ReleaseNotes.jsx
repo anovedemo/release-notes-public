@@ -7,6 +7,8 @@ import 'animate.css';
 
 function ReleaseNotes({ currentSession, logout, releaseData }) {
 
+    const currentDate = new Date();
+
     function formatDate(dateStr) {
         const date = new Date(dateStr);
 
@@ -36,33 +38,35 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
     } else {
         const [shownReleaseNotes, setShownReleaseNotes] = useState([]);
 
-        const datesList = releaseData.map(
+        const datesList = releaseData
+            .filter(item => new Date(item.date) <= currentDate)
+            .map(
             item =>
-            <div key={item.id}>
-                <div
-                    onClick={
-                        shownReleaseNotes.includes(item.id) ?
+                <div key={item.id}>
+                    <div
+                        onClick={
+                            shownReleaseNotes.includes(item.id) ?
 
-                        // OnClick removes the clicked item from the showReleaseNotes array.
-                        () => setShownReleaseNotes((prevState) => prevState.filter(id => id !== item.id)) :
+                            // OnClick removes the clicked item from the showReleaseNotes array.
+                            () => setShownReleaseNotes((prevState) => prevState.filter(id => id !== item.id)) :
 
-                        // OnClick adds the clicked item to the showReleaseNotes array.
-                        () => setShownReleaseNotes((prevState) => [...prevState, item.id])
-                    }
-                    className="dropdown hover:bg-midblue hover:bg-opacity-10 p-3 rounded-md transition-colors duration-300 ease-in-out"
-                >
-                    {
-                        shownReleaseNotes.includes(item.id) ?
-                        <img src="/arrow_down.svg" /> :
-                        <img src="/arrow_right.svg" />
-                    }
-                    <h4>{formatDate(item.date)}</h4>
+                            // OnClick adds the clicked item to the showReleaseNotes array.
+                            () => setShownReleaseNotes((prevState) => [...prevState, item.id])
+                        }
+                        className="dropdown hover:bg-midblue hover:bg-opacity-10 p-3 rounded-md transition-colors duration-300 ease-in-out"
+                    >
+                        {
+                            shownReleaseNotes.includes(item.id) ?
+                            <img src="/arrow_down.svg" /> :
+                            <img src="/arrow_right.svg" />
+                        }
+                        <h4>{formatDate(item.date)}</h4>
+                    </div>
+                    <div>
+                        {shownReleaseNotes.includes(item.id) && <Release clickedRelease={item.id} releaseData={releaseData}/>}
+                    </div>
+                    <div className="divider my-2"></div>
                 </div>
-                <div>
-                    {shownReleaseNotes.includes(item.id) && <Release clickedRelease={item.id} releaseData={releaseData}/>}
-                </div>
-                <div className="divider my-2"></div>
-            </div>
         )
 
         return (
