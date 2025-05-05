@@ -6,7 +6,7 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row mt-12">
                     <div className="w-1/2 lg:w-2/5 self-center">
                     <div className="flex flex-col lg:flex-row max-w-[230px]">
-                    <img src='/public/Primary Logo on Light BG.svg' className="mx-auto h-20 w-auto mb-10"></img>
+                    <img src='/Primary Logo on Light BG.svg' className="mx-auto h-20 w-auto mb-10"></img>
                     </div>
                     </div>
                     <div className="lg:w-1/5 flex flex-col gap-2 py-5">
