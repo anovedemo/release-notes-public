@@ -2,15 +2,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ReleaseNotes from './pages/ReleaseNotes'
 import Authentication from './pages/Authentication'
 import UpdateReleaseNotes from './pages/UpdateReleaseNotes'
+import Documentation from './pages/Documentation'
 import './App.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { supabase } from './supabaseClient';
+import Articles from './pages/Articles'
+import LandingPage from './pages/LandingPage'
+import Videos from './pages/Videos'
 
 function App() {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
   const [releaseData, setReleaseData] = useState();
+  const [articleData, setArticleData] = useState();
+  const [videoData, setVideoData] = useState();
 
   // Fetch release notes from the supabase server.
   const fetchReleaseNotes = async () => {
@@ -30,11 +36,53 @@ function App() {
       } finally {
           setLoading(false)
       }
-  }
+    }
+
+    // Fetch articles from the supabase server.
+    const fetchArticles = async () => {
+      try {
+          const { data, error } = await supabase
+              .from("articles")
+              .select("*")
+              .order('category', { ascending: false });
+
+          if (error) {
+              console.error("Error feching articles: ", error);
+          } else {
+              setArticleData(data);
+          }
+      } catch (error) {
+          console.error("Error fetching articles: ", error)
+      } finally {
+          setLoading(false)
+      }
+    }
+
+    // Fetch articles from the supabase server.
+    const fetchVideos = async () => {
+      try {
+          const { data, error } = await supabase
+              .from("videos")
+              .select("*")
+              .order('category', { ascending: false });
+
+          if (error) {
+              console.error("Error feching videos: ", error);
+          } else {
+              setVideoData(data);
+          }
+      } catch (error) {
+          console.error("Error fetching videos: ", error)
+      } finally {
+          setLoading(false)
+      }
+    }
 
   useEffect(() => {
 
     fetchReleaseNotes();
+    fetchArticles();
+    fetchVideos();
 
     // Fetch the current session.
     const fetchSession = async () => {
@@ -70,9 +118,13 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<ReleaseNotes currentSession={session} logout={handleLogOut} releaseData={releaseData}/>} />
+          <Route index element={<LandingPage currentSession={session} logout={handleLogOut} releaseData={releaseData}/>} />
+          <Route path='/release_notes' element={<ReleaseNotes currentSession={session} logout={handleLogOut} releaseData={releaseData}/>} />
           <Route path='/authentication' element={<Authentication currentSession={session} logout={handleLogOut} />} />
           <Route path='/update' element={<UpdateReleaseNotes currentSession={session} logout={handleLogOut} />} />
+          <Route path='/documentation' element={<Documentation currentSession={session} logout={handleLogOut}/>} />
+          <Route path='/articles' element={<Articles currentSession={session} logout={handleLogOut} articleData={articleData}/>} />
+          <Route path='/videos' element={<Videos currentSession={session} logout={handleLogOut} videoData={videoData}/>} />
         </Routes>
       </BrowserRouter>
     </>

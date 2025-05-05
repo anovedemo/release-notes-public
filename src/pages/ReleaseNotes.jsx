@@ -7,6 +7,8 @@ import 'animate.css';
 
 function ReleaseNotes({ currentSession, logout, releaseData }) {
 
+    const currentDate = new Date();
+
     function formatDate(dateStr) {
         const date = new Date(dateStr);
 
@@ -36,33 +38,35 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
     } else {
         const [shownReleaseNotes, setShownReleaseNotes] = useState([]);
 
-        const datesList = releaseData.map(
+        const datesList = releaseData
+            .filter(item => new Date(item.date) <= currentDate)
+            .map(
             item =>
-            <div key={item.id}>
-                <div
-                    onClick={
-                        shownReleaseNotes.includes(item.id) ?
+                <div key={item.id}>
+                    <div
+                        onClick={
+                            shownReleaseNotes.includes(item.id) ?
 
-                        // OnClick removes the clicked item from the showReleaseNotes array.
-                        () => setShownReleaseNotes((prevState) => prevState.filter(id => id !== item.id)) :
+                            // OnClick removes the clicked item from the showReleaseNotes array.
+                            () => setShownReleaseNotes((prevState) => prevState.filter(id => id !== item.id)) :
 
-                        // OnClick adds the clicked item to the showReleaseNotes array.
-                        () => setShownReleaseNotes((prevState) => [...prevState, item.id])
-                    }
-                    className='dropdown'
-                >
-                    {
-                        shownReleaseNotes.includes(item.id) ?
-                        <img src="/arrow_down.svg" /> :
-                        <img src="/arrow_right.svg" />
-                    }
-                    <h4>{formatDate(item.date)}</h4>
+                            // OnClick adds the clicked item to the showReleaseNotes array.
+                            () => setShownReleaseNotes((prevState) => [...prevState, item.id])
+                        }
+                        className="dropdown hover:bg-midblue hover:bg-opacity-10 p-3 rounded-md transition-colors duration-300 ease-in-out"
+                    >
+                        {
+                            shownReleaseNotes.includes(item.id) ?
+                            <img src="/arrow_down.svg" /> :
+                            <img src="/arrow_right.svg" />
+                        }
+                        <h4>{formatDate(item.date)}</h4>
+                    </div>
+                    <div>
+                        {shownReleaseNotes.includes(item.id) && <Release clickedRelease={item.id} releaseData={releaseData}/>}
+                    </div>
+                    <div className="divider my-2"></div>
                 </div>
-                <div>
-                    {shownReleaseNotes.includes(item.id) && <Release clickedRelease={item.id} releaseData={releaseData}/>}
-                </div>
-                <div className="divider"></div>
-            </div>
         )
 
         return (
@@ -79,9 +83,9 @@ function ReleaseNotes({ currentSession, logout, releaseData }) {
                         <div className="w-[90%] lg:w-2/3">
                             <h2 className="text-2xl font-medium">Latest Release Notes</h2>
                             <p>Here you can find the release notes for the most recent Anove version.</p>
-                            <div className="divider"></div>
+                            <div className="divider mb-2"></div>
 
-                            {datesList}
+                            <div className="animate__animated animate__fadeInUp">{datesList}</div>
                         </div>
                     </div>
                     <div class="bg-white py-10 mb-8 sm:py-10 lg:px-6">
