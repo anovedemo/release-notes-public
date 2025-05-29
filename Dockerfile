@@ -1,6 +1,15 @@
 # Build stage
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Accept build args for Vite env vars
+ARG VITE_SUPABASE_URL
+ARG VITE_SUPABASE_KEY
+
+# Write .env file with secrets
+RUN echo "VITE_SUPABASE_URL=$VITE_SUPABASE_URL" > .env && \
+    echo "VITE_SUPABASE_KEY=$VITE_SUPABASE_KEY" >> .env
+
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .

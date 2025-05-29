@@ -42,6 +42,9 @@ jobs:
             rg.${{ env.SCW_DEFAULT_REGION }}.scw.cloud/${{ env.SCW_REGISTRY_NAMESPACE }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}
+            VITE_SUPABASE_KEY=${{ secrets.VITE_SUPABASE_KEY }}
 
       - name: Setup Scaleway CLI
         uses: scaleway/action-scw@v0
