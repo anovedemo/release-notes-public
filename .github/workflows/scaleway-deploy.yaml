@@ -8,8 +8,8 @@ on:
 env:
   SCW_DEFAULT_REGION: fr-par
   SCW_REGISTRY_NAMESPACE: namespace-new-webiste # Same as before, typo kept for consistency
-  IMAGE_NAME: vite-react-app
-  SCW_SERVERLESS_CONTAINER_ID: e8e42598-8860-45ee-8dc3-890fe00c972e
+  IMAGE_NAME: vite-app-docs
+  SCW_SERVERLESS_CONTAINER_ID: ebd6e7c5-09d8-40df-a66a-9a8e06b2c1e9
 
 jobs:
   build-and-deploy:
